@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import WellnessCheckIn from "./pages/WellnessCheckIn";
 import RequestSupport from "./pages/RequestSupport";
+import AdminDashboard from "./pages/AdminDashboard";
 import PersonnelLayout from "./components/PersonnelLayout";
 
 const App = () => {
@@ -18,12 +19,14 @@ const App = () => {
           <Route path="/request-support" element={<RequestSupport />} />
         </Route>
 
+        <Route path="/admin" element={<AdminDashboard />} />
+
         <Route path="/" element={<Navigate to="/login" replace />} />
 
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
     </BrowserRouter>
   );
-}
+};
 
 export default App;
