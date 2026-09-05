@@ -1,0 +1,42 @@
+export default function TrendCard() {
+  const points = [
+    [20, 160],
+    [105, 116],
+    [190, 110],
+    [275, 58],
+    [360, 45],
+    [445, 85],
+  ];
+  return (
+    <div className="relative h-50">
+      <div className="absolute inset-x-0 top-2 bottom-6 ml-8 flex flex-col justify-between">
+        {[1, 2, 3, 4].map((line) => (
+          <i key={line} className="border-t border-slate-200" />
+        ))}
+      </div>
+      <svg
+        className="relative ml-8 h-44 w-[calc(100%-2rem)]"
+        viewBox="0 0 500 210"
+      >
+        <path
+          fill="#e6f0fe"
+          d="M20 160L105 116L190 110L275 58L360 45L445 85L445 190L20 190Z"
+        />
+        <polyline
+          fill="none"
+          stroke="#2163c7"
+          strokeWidth="3"
+          points={points.map((point) => point.join(",")).join(" ")}
+        />
+        {points.map(([x, y]) => (
+          <circle key={x} cx={x} cy={y} r="5" fill="#2163c7" />
+        ))}
+      </svg>
+      <div className="ml-8 flex justify-between text-[10px] text-slate-500">
+        {["Jan", "Feb", "Mar", "Apr", "May", "Jun"].map((month) => (
+          <span key={month}>{month}</span>
+        ))}
+      </div>
+    </div>
+  );
+}

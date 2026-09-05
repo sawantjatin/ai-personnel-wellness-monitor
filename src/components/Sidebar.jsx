@@ -8,7 +8,6 @@ import {
   LogOut,
   ShieldCheck,
 } from "lucide-react";
-
 import { NavLink, useNavigate } from "react-router-dom";
 
 const menuItems = [
@@ -38,33 +37,32 @@ const Sidebar = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("userRole");
     navigate("/login");
   };
 
   return (
-    <aside className="hidden md:flex w-64 min-h-screen bg-gradient-to-b from-emerald-950 to-teal-900 text-white flex-col fixed left-0 top-0">
-      {/* Logo */}
-      <div className="px-6 py-7 border-b border-white/10">
+    <aside className="flex w-64 min-h-screen bg-gradient-to-b from-emerald-950 to-teal-900 text-white flex-col fixed left-0 top-0 z-40">
+      {/* Logo / Brand */}
+      <div className="px-6 py-6 border-b border-white/10">
         <div className="flex items-center gap-3">
-          <div className="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center">
-            <ShieldCheck size={27} />
+          <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
+            <ShieldCheck size={24} />
           </div>
 
           <div>
-            <h1 className="font-bold text-lg tracking-wide">
-              FORCE WELFARE AI
-            </h1>
-
-            <p className="text-xs text-emerald-100/70">
-              Your Well-being Matters
-            </p>
+            <h1 className="font-bold text-lg">Personnel Care</h1>
+            <p className="text-xs text-emerald-200">Wellness Monitoring</p>
           </div>
         </div>
       </div>
 
       {/* Navigation */}
       <nav className="flex-1 px-4 py-6 space-y-2">
+        <p className="px-3 mb-3 text-xs font-semibold uppercase tracking-wider text-emerald-300">
+          Main Menu
+        </p>
+
         {menuItems.map((item) => {
           const Icon = item.icon;
 
@@ -73,10 +71,10 @@ const Sidebar = () => {
               key={item.name}
               to={item.path}
               className={({ isActive }) =>
-                `flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${
+                `flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${
                   isActive
-                    ? "bg-emerald-500/90 text-white shadow-lg"
-                    : "text-emerald-50/90 hover:bg-white/10"
+                    ? "bg-white/15 text-white shadow-sm"
+                    : "text-emerald-100 hover:bg-white/10 hover:text-white"
                 }`
               }
             >
@@ -87,40 +85,37 @@ const Sidebar = () => {
         })}
 
         {/* Resources */}
-        <button
-          className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-emerald-50/90 hover:bg-white/10 transition"
-          onClick={() => alert("Resources section coming soon.")}
-        >
-          <BookOpen size={20} />
-          <span className="text-sm font-medium">Resources</span>
-        </button>
+        <div className="pt-6">
+          <p className="px-3 mb-3 text-xs font-semibold uppercase tracking-wider text-emerald-300">
+            Other
+          </p>
 
-        {/* Profile */}
-        <button
-          className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-emerald-50/90 hover:bg-white/10 transition"
-          onClick={() => alert("Profile section coming soon.")}
-        >
-          <User size={20} />
-          <span className="text-sm font-medium">Profile</span>
-        </button>
+          <button className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-emerald-100 hover:bg-white/10 hover:text-white transition-all">
+            <BookOpen size={20} />
+            <span className="text-sm font-medium">Resources</span>
+          </button>
+
+          <button className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-emerald-100 hover:bg-white/10 hover:text-white transition-all">
+            <User size={20} />
+            <span className="text-sm font-medium">My Profile</span>
+          </button>
+        </div>
       </nav>
 
-      {/* Bottom Message */}
-      <div className="px-4 pb-5">
-        <div className="rounded-xl border border-white/15 bg-white/5 p-4 mb-4">
-          <div className="flex items-center gap-2 mb-3">
-            <ShieldCheck size={18} />
-            <span className="font-semibold text-sm">Remember</span>
-          </div>
+      {/* Wellness Message */}
+      <div className="mx-4 mb-5 p-4 rounded-xl bg-white/10 border border-white/10">
+        <p className="text-sm font-medium">Your wellbeing matters.</p>
 
-          <p className="text-sm text-emerald-50/90 leading-relaxed">
-            It's okay to ask for help. You are not alone.
-          </p>
-        </div>
+        <p className="text-xs text-emerald-200 mt-1">
+          Take a moment to complete your daily check-in.
+        </p>
+      </div>
 
+      {/* Logout */}
+      <div className="px-4 pb-6">
         <button
           onClick={handleLogout}
-          className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-emerald-50/90 hover:bg-red-500/20 transition"
+          className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-emerald-100 hover:bg-red-500/20 hover:text-white transition-all"
         >
           <LogOut size={20} />
           <span className="text-sm font-medium">Logout</span>
@@ -128,6 +123,6 @@ const Sidebar = () => {
       </div>
     </aside>
   );
-}
+};
 
 export default Sidebar;
