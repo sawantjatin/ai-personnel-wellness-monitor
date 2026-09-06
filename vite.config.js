@@ -6,12 +6,15 @@ import path from "path";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "./src"),
     },
   },
+
   preview: {
+    host: "0.0.0.0",
     allowedHosts: ["ai-personnel-wellness-monitor.onrender.com"],
   },
 });
