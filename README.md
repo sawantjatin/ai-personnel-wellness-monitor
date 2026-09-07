@@ -1,6 +1,28 @@
-# React + Vite
+# AI Personnel Wellness Monitor
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+## Local development
+
+```bash
+npm install
+npm run dev
+```
+
+## Production build
+
+```bash
+npm run build
+npm run preview
+```
+
+## Render deployment
+
+This repository includes `render.yaml` for a Render Static Site deployment. In Render, choose **New > Blueprint** and select this repository. Render will run `npm run build`, publish `dist`, and rewrite application routes to `index.html` so direct links such as `/dashboard` continue to work.
+
+For a manual Static Site setup, use:
+
+- Build command: `npm run build`
+- Publish directory: `dist`
+- Rewrite: `/*` -> `/index.html`
 
 Currently, two official plugins are available:
 
